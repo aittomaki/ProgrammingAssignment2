@@ -3,8 +3,7 @@
 ## to be recalculated every time an inverse is needed.
 ## This is a solution to Programming Assignment 2 of the Coursera
 ## course R Programming.
-##
-## Author: Viljami Aittomaki
+
 
 
 ## Creates a special matrix, that is a list of four functions:
@@ -16,6 +15,7 @@
 makeCacheMatrix <- function(x = matrix()) {
     # Create a variable for storing the inverse
     i <- NULL
+
     # Function for setting the value of the matrix
     set <- function(y) {
         x <<- y
@@ -24,10 +24,13 @@ makeCacheMatrix <- function(x = matrix()) {
     }
     # Function for getting the matrix itself
     get <- function() x
+    
     # Function for setting the inverse of the matrix
     setinverse <- function(y) i <<- y
+    
     # Function for getting the inverse
     getinverse <- function() i
+    
     # Return a list with the functions
     list(set = set, get = get,
          setinverse = setinverse,
@@ -42,6 +45,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## returns the cached value.
 
 cacheSolve <- function(x, ...) {
+    
     # Get the inverse from x and return if it is defined
     i <- x$getinverse()
     if(!is.null(i)) {
